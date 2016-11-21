@@ -2,7 +2,7 @@
   <div class="row">
     <% @watches.each do |watch| %>
     <div class="col-xs-12 col-sm-4">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path( "xmnekrv7t2gigbpgsgtk", :width => 100, :height => 150, :crop => :fill) %>      );">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url( <%= cl_image_path( "http://cdn.gearpatrol.com/wp-content/uploads/2016/10/Gold-Dress-Watches-Gear-Patrol-Lead-1440.jpg", :type=>"fetch", :crop => :fit) %> );">
         <div class="card-description">
           <h2><%= watch.name %></h2>
           <p><%= watch.price %>€/day</p>

@@ -6,7 +6,7 @@ class WatchesController < ApplicationController
   end
 
   # TODO: make it a proper method, fix routing to display watches of the user
-  def user_watches
+  def watches_owned
     @user = User.find(params[:user_id])
     @watches = @user.watches
   end
