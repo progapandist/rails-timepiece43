@@ -1,0 +1,15 @@
+<h1>Your current Booking</h1>
+  <p><strong>The Watch:</strong>
+    <%=@booking.watch.name%>
+  </p>
+  <p> <strong>Start Date:</strong>
+    <%=Date.strftime(@booking.start, %A, %b %d)%>
+  </p>
+  <p> <strong>End Date:</strong>
+    <%=Date.strftime(@booking.end, %A, %b %d)%>
+  </p>
+  <p> <strong>The Owner:</strong>
+    <%=@booking.watch.user%>
+  </p>
+
+<p><%= link_to "Home",  %></p>
