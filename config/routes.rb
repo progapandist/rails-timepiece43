@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :watches, only: [ :index, :show, :create, :new, :edit, :update ]
+  resources :watches, only: [ :index ]
   resources :users, only: [ :show, :edit, :update ] do
-    resources :watches, only: [ :index ]
+    resources :watches, only: [ :index, :show, :new, :create, :edit, :update ]
     resources :bookings, only: [ :index, :show ]
   end
 
