@@ -1,0 +1,18 @@
+<div class="container">
+  <h1>Your Bookings:</h1>
+    <row>
+      <% @bookings.each do |booking| %>
+      <div class="col-xs-12 col-sm-4">
+        <%= booking.owner %>
+        <%= booking.watch.user %>
+        <%= booking.watch.name %>
+        <%= booking.start %>
+        <%= booking.end %>
+        <% end %>
+      </div>
+    </row>
+</div>
+
+
+
+
