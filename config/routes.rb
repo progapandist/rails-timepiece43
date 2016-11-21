@@ -7,6 +7,6 @@ Rails.application.routes.draw do
     resources :bookings, only: [ :index, :show ]
   end
 
-  root to: 'pages#home'
+  root to: 'watches#index'
   mount Attachinary::Engine => "/attachinary"
 end
