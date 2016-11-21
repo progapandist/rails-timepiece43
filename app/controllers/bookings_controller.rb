@@ -9,7 +9,7 @@ class BookingsController < ApplicationController
   end
 
   def show
-    if current_user.id = params[:user_id]
+    if current_user.id == params[:user_id]
       @booking = Booking.find(params[:booking_id])
     else
       redirect_to new_user_session_path
