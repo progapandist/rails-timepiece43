@@ -14,4 +14,6 @@
   watch = Watch.new(name: "Rolex", description: "A beautiful watch", price: 50)
   watch.user = user
   watch.save
+  url = "http://cdn2.jomashop.com/media/catalog/product/r/o/rolex-sea-dweller-4000-black-dial-stainless-steel-rolex-oyster-automatic-men_s-watch-116600bkso.jpg"
+  watch.photo_url = url
 end
