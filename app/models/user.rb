@@ -7,6 +7,6 @@ class User < ApplicationRecord
   has_many :watches
   has_many :bookings
 
-  # validates :first_name, presence: true
-  # validates :last_name, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 end
