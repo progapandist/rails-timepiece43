@@ -2,12 +2,12 @@
   <h1>Your Bookings:</h1>
     <row>
       <% @bookings.each do |booking| %>
-      <div class="col-xs-12 col-sm-4">
-        <%= booking.owner %>
+      <div class="col-sm-4 col-sm-offset-4">
+        <%= booking.user %>
         <%= booking.watch.user %>
         <%= booking.watch.name %>
-        <%= booking.start %>
-        <%= booking.end %>
+        <%= Date.strftime(booking.start, %A, %b %d)%>
+        <%= Date.strftime(booking.end, %A, %b %d) %>
         <% end %>
       </div>
     </row>
