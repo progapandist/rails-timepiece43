@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => {:registrations => "registrations"}
+  devise_for :users
 
   resources :watches, only: [ :index ]
   resources :users, only: [ :show, :edit, :update ] do
