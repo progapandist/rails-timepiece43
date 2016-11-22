@@ -1,6 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3"> <%= cl_image_tag user_avatar_or_stub(@user), crop: :fill, class:"avatar-profile" %>
+    <div class="col-md-3"> <%= cl_image_tag user_avatar_or_stub(@user),
+    width: 200, height: 200, crop: :fill, gravity: :face,  
+    class:"avatar-profile" %>
     </div>
     <div class="col-md-3">
       <h1> <%= "#{@user.first_name} #{@user.last_name}" %> </h1>
