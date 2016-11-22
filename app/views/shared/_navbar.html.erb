@@ -30,11 +30,6 @@
               <% end %>
             </li>
             <li>
-              <%= link_to edit_user_path(current_user) do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Edit profile") %>
-              <% end %>
-            </li>
-            <li>
               <%= link_to root_path do %>
                 <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
               <% end %>
@@ -49,6 +44,7 @@
       </div>
 
       <!-- Button (call-to-action) -->
+
     <%= link_to t(".top_call_to_action", default: "Create a watch"), new_watch_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
 
     <% else %>
