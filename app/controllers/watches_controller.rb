@@ -6,9 +6,7 @@ class WatchesController < ApplicationController
   end
 
   def show
-    # we can only show user's watches in show when accessing users/6/watches/:id
-    @user = User.find(params[:user_id])
-    @watch = @user.watches.find(params[:id])
+    @watch = Watch.find(params[:id])
   end
 
   def new

@@ -18,6 +18,7 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+    @user = current_user
   end
 
   def create
