@@ -35,6 +35,17 @@
                 <i class="fa fa-pencil"></i> <%= t(".profile", default: "Edit profile") %>
               <% end %>
             </li>
+
+            <li>
+              <%= link_to bookings_path do %>
+                <i class="fa fa-money"></i> <%= t(".profile", default: "My bookings") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to owner_bookings_path do %>
+                <i class="fa fa-money"></i> <%= t(".profile", default: "My dashboard as an owner") %>
+              <% end %>
+            </li>
             <li>
               <%= link_to root_path do %>
                 <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
