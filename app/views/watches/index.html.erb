@@ -8,7 +8,7 @@
           <p><%= watch.price %>€/day</p>
         </div>
         <a class="card-link" href= ></a>
-        <%#= link_to "", user_watch_path(watch), class:"card-link"  %>
+        <%= link_to "", user_watch_path(watch.user, watch), class:"card-link"  %>
       </div>
     </div>
     <% end %>
@@ -16,5 +16,5 @@
 </div>
 
 <% if current_user %>
-<%= link_to "Create a new watch",  new_user_watch_path(current_user.id)  %>
+<%= link_to "Create a new watch",  new_user_watch_path(current_user)  %>
 <% end %>
