@@ -6,7 +6,9 @@ class WatchesController < ApplicationController
   end
 
   def show
-    @watch = Watch.find(params[:id])
+    # we can only show user's watches in show when accessing users/6/watches/:id
+    @user = User.find(params[:user_id])
+    @watch = @user.watches.find(params[:id])
   end
 
   def new
@@ -16,8 +18,8 @@ class WatchesController < ApplicationController
 
   def create
     @watch = Watch.new(watch_params)
-    @user = User.find(params[:user_id])
-    @watch.user = @user 
+    @user = User.find(current_user.id)
+    @watch.user = @user
     if @watch.save
       redirect_to user_watch_path(@user, @watch)
     else

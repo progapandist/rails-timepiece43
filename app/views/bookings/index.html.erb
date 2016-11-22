@@ -6,8 +6,8 @@
         <%= booking.user %>
         <%= booking.watch.user %>
         <%= booking.watch.name %>
-        <%= Date.strftime(booking.start, %A, %b %d)%>
-        <%= Date.strftime(booking.end, %A, %b %d) %>
+        <%= Date.strftime(booking.start," %A, %b %d")%>
+        <%= Date.strftime(booking.end, "%A, %b %d") %>
         <% end %>
       </div>
     </row>
