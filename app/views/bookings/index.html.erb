@@ -1,9 +1,18 @@
+<div class="container">
+  <h1 class=" text-center">Your Bookings:</h1>
+  <% @bookings.each do |booking| %>
+    <div class="row">
 
-  <h1>Your Bookings:</h1>
-      <% @bookings.each do |booking| %>
-        <%= booking.user.last_name %>
-        <%#= booking.watch.user %>
-        <%#= booking.watch.name %>
-        <%#= Date.strftime(booking.start," %A, %b %d")%>
-        <%#= Date.strftime(booking.end, "%A, %b %d") %>
+      <div class="col-md-12">
+
+       <p> Name:  <%= booking.user.first_name %>
+        <%= booking.user.last_name %></p>
+        <p> The Time Piece: <%= booking.watch.name %></p>
+        <p>Booking start: <%= booking.start %> </p>
+        <p>Booking end:  <%= booking.end %> </p>
         <% end %>
+    </div>
+  </div>
+  <%= link_to "Home", watches_path %>
+</div>
+
