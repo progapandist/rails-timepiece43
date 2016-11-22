@@ -22,9 +22,7 @@
       <!-- Profile picture and dropdown -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-
-          <% avatar_url = current_user.facebook_picture_url || user_avatar_or_stub(current_user) %>
-          <%= cl_image_tag avatar_url, width: 200, height: 200, crop: :fill, gravity: :face,
+          <%= cl_image_tag user_avatar_or_stub(current_user), width: 200, height: 200, crop: :fill, gravity: :face,
           class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
