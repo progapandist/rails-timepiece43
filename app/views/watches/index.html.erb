@@ -14,3 +14,7 @@
     <% end %>
   </div>
 </div>
+
+<% if current_user %>
+<%= link_to "Create a new watch",  new_user_watch_path(current_user.id)  %>
+<% end %>

@@ -14,6 +14,7 @@ class WatchesController < ApplicationController
   end
 
   def create
+    raise
     if current_user.id == params[:user_id]
       @watch.new(watch_params)
       @watch.user = User.find(params[:user_id])

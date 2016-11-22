@@ -1,7 +1,6 @@
 <%= simple_form_for [@user, @watch] do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
-  <%= f.input :price %>
-  <%= f.input :name %>
-  <%= f.submit "add a review", class: "btn btn-primary" %>
+  <%= f.input :price, :label => "Price /day" %>
+  <%= f.submit "Add this watch!", class: "btn btn-primary" %>
 <% end %>
