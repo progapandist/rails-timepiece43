@@ -11,17 +11,17 @@ class WatchesController < ApplicationController
 
   def new
     @watch = Watch.new
+    @user = User.find(params[:user_id])
   end
 
   def create
-    if current_user.id == params[:user_id]
-      @watch.new(watch_params)
-      @watch.user = User.find(params[:user_id])
-      if @watch.save
-        redirect_to watch_path(@watch)
-      else
-        render :new
-      end
+    @watch = Watch.new(watch_params)
+    @user = User.find(params[:user_id])
+    @watch.user = @user 
+    if @watch.save
+      redirect_to user_watch_path(@user, @watch)
+    else
+      render :new
     end
   end
 

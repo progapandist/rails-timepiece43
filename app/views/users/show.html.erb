@@ -1,9 +1,9 @@
 <h1> <%= "#{@user.first_name} #{@user.last_name}" %> </h1>
 <div class="">
   <h2> <%= "#{@user.first_name}'s watches" %> </h2>
-  <li>
+  <ul>
     <% @user.watches.each do |watch| %>
-      <ul> <%= cl_image_tag watch.photo.path, width: 300, height: 300, crop: :fit %> </ul>
+      <li> <%= cl_image_tag watch_photo_or_stub(watch), width: 200, height: 200, crop: :fill %> </li>
     <% end %>
-  </li>
+  </ul>
 </div>

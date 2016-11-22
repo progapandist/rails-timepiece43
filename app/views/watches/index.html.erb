@@ -2,13 +2,13 @@
   <div class="row">
     <% @watches.each do |watch| %>
     <div class="col-xs-12 col-sm-4">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url( <%= cl_image_path watch.photo.path, crop: :fill %> );">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url( <%= cl_image_path watch_photo_or_stub(watch), crop: :fill %> );">
         <div class="card-description">
           <h2><%= watch.name %></h2>
           <p><%= watch.price %>€/day</p>
         </div>
         <a class="card-link" href= ></a>
-        <%= link_to "", user_watch_path(watch.user, watch), class:"card-link"  %>
+        <%= link_to "", user_watch_path(watch.user, watch), class:"<ca></ca>rd-link"  %>
       </div>
     </div>
     <% end %>
