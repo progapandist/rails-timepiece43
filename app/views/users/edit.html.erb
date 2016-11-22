@@ -1,5 +1,10 @@
 <%= simple_form_for [@user] do |f| %>
   <%= f.input :first_name %>
   <%= f.input :last_name %>
+  <%= f.input :email %>
   <%= f.submit "Change info!", class: "btn btn-primary" %>
+<% end %>
+
+<% if current_user %>
+<%= link_to "Edit password",  edit_user_registration_path(current_user) , {class: "btn btn-danger"} %>
 <% end %>

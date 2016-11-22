@@ -1,9 +1,19 @@
-<h1> <%= "#{@user.first_name} #{@user.last_name}" %> </h1>
-<div class="">
+<div class="container">
+
+  <h1> <%= "#{@user.first_name} #{@user.last_name}" %> </h1>
+  <% if current_user %>
+<%= link_to "Edit profile",  edit_user_path(current_user)  , {class: "btn btn-primary"} %>
+<% end %>
   <h2> <%= "#{@user.first_name}'s watches" %> </h2>
-  <ul>
-    <% @user.watches.each do |watch| %>
-      <li> <%= cl_image_tag watch_photo_or_stub(watch), width: 200, height: 200, crop: :fill %> </li>
-    <% end %>
-  </ul>
+  <div class="container">
+    <div class="row">
+      <% @user.watches.each do |watch| %>
+        <div class="col-md-3">
+          <%= link_to watch_path(watch) do %>
+            <%= cl_image_tag watch_photo_or_stub(watch), width: 200, height: 200, crop: :fill %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
