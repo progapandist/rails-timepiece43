@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161121154628) do
+ActiveRecord::Schema.define(version: 20161122150758) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,8 +35,9 @@ ActiveRecord::Schema.define(version: 20161121154628) do
     t.date     "end"
     t.integer  "watch_id"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "status",     default: "pending"
     t.index ["user_id"], name: "index_bookings_on_user_id", using: :btree
     t.index ["watch_id"], name: "index_bookings_on_watch_id", using: :btree
   end

@@ -11,3 +11,5 @@
   <%= link_to "#{@watch.user.first_name} #{@watch.user.last_name}", user_path(@watch.user)%>
   </p>
 </div>
+<%= link_to "Book this watch!", new_watch_booking_path(@watch)  %>
+<br>
