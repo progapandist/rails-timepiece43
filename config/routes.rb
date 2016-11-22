@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   resources :users, only: [ :show, :edit, :update ]
   resources :bookings, only: [ :index, :show ]
 
+  get '/owner-bookings' => 'bookings#owner_index'
+  get '/bookings/:id/accept' => 'bookings#accepted', as: 'accept_booking'
+  get '/bookings/:id/reject' => 'bookings#rejected', as: 'reject_booking'
+
   root to: 'watches#index'
   mount Attachinary::Engine => "/attachinary"
 end
