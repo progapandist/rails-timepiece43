@@ -6,12 +6,25 @@ class BookingsController < ApplicationController
   end
 
   def owner_index
+
+    ## I need to have @bookings equal to an array with all bookings
+#
     @user = current_user
     owner_watches = @user.watches
+
     owner_watches_ids = owner_watches.map do |watch|
       watch.id
     end
-    @bookings = Booking.where(owner_watches_ids.include?(:watch_id))
+
+    @bookings = []
+    @user = current_user
+    Booking.all.each do |booking|
+      if owner_watches_ids.include?(booking.watch.id)
+        @bookings << booking
+      end
+    end
+
+
   end
 
   def accepted
