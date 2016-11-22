@@ -5,6 +5,29 @@ class BookingsController < ApplicationController
     @bookings = Booking.where(user: @user)
   end
 
+  def owner_index
+    @user = current_user
+    owner_watches = @user.watches
+    owner_watches_ids = owner_watches.map do |watch|
+      watch.id
+    end
+    @bookings = Booking.where(owner_watches_ids.include?(:watch_id))
+  end
+
+  def accepted
+    @booking = Booking.find(params[:id])
+    @booking.status = "accepted"
+    @booking.save
+    redirect_to owner_bookings_path
+  end
+
+  def rejected
+    @booking = Booking.find(params[:id])
+    @booking.status = "declined"
+    @booking.save
+    redirect_to owner_bookings_path
+  end
+
   def show
    @booking = Booking.find(params[:id])
   end
