@@ -1,24 +1,42 @@
-<% @bookings.each do |booking| %>
-  <p><%= booking.watch.name %></p>
-  <p><%= booking.start %></p>
-  <p><%= booking.end %></p>
-  <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
-  <p><%= booking.status %></p>
+<% if @bookings.nil? %>
+<h1 class="text-center">You have no bookings on your watches at the moment</h1>
+<% else %>
+<h1 class="text-center">Your watches have been booked! </h1>
+<div class="container">
+      <% @bookings.each do |booking| %>
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-2">
+      <div class="box text-center" style="background: white; border-radius: 10px; margin-top:20px">
+      <p>Your watch: <%= booking.watch.name %></p>
+      <%= cl_image_tag booking.watch.photo.path, size:"40px" %>
+      <p>Start: <%= booking.start %></p>
+      <p>End: <%= booking.end %></p>
+      <p>User: <%= booking.user.first_name %> <%= booking.user.last_name %></p>
+      <%= cl_image_tag booking.user.avatar.path, size:"40px" %>
+      <p>Booking <%= booking.status %></p>
+      </div>
+    </div>
+    <div class="col-xs-4">
+      <div class="box text-center" style="background: white; border-radius: 10px; margin-top:20px">
+        <% if booking.status == "pending" %>
+      <%= link_to "Accept the booking", accept_booking_path(booking), class: "btn btn-primary"  %>
+      <%= link_to "Decline the booking", reject_booking_path(booking), class: "btn btn-danger"  %>
+      <% end %>
 
-  <% if booking.status == "pending" %>
-  <%= link_to "Accept the booking", accept_booking_path(booking), class: "btn btn-primary"  %>
-  <%= link_to "Decline the booking", reject_booking_path(booking), class: "btn btn-danger"  %>
+      <% if booking.status == "accepted" %>
+      <%= link_to "Decline the booking", reject_booking_path(booking), class: "btn btn-danger"  %>
+      <% end %>
+
+      <% if booking.status == "declined" %>
+      <%= link_to "Accept the booking", accept_booking_path(booking), class: "btn btn-primary"  %>
+      <% end %>
+      </div>
+    </div>
+  </div>
   <% end %>
+</div>
+<% end %>
 
-  <% if booking.status == "accepted" %>
-  <%= link_to "Decline the booking", reject_booking_path(booking), class: "btn btn-danger"  %>
-  <% end %>
-
-  <% if booking.status == "declined" %>
-  <%= link_to "Accept the booking", reject_booking_path(booking), class: "btn btn-primary"  %>
-  <% end %>
-
-<% end   %>
 
 
 
