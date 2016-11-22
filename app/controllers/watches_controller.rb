@@ -6,44 +6,43 @@ class WatchesController < ApplicationController
   end
 
   def show
-    # we can only show user's watches in show when accessing users/6/watches/:id
-    @user = User.find(params[:user_id])
-    @watch = @user.watches.find(params[:id])
+    @watch = Watch.find(params[:id])
   end
 
   def new
     @watch = Watch.new
-    @user = User.find(params[:user_id])
+    @user = current_user
   end
 
   def create
     @watch = Watch.new(watch_params)
-    @user = User.find(current_user.id)
+    @user = current_user
     @watch.user = @user
     if @watch.save
-      redirect_to user_watch_path(@user, @watch)
+      redirect_to watch_path(@watch)
     else
       render :new
     end
   end
 
-  def edit
-    if current_user.id == params[:user_id]
-      @watch.find(params[:watch_id])
-    end
-  end
-
-  def update
-    if current_user.id == params[:user_id]
-      @watch.find(params[:watch_id])
-      @watch.update_attributes(watch_params)
-      if @watch.save
-        redirect_to watch_path(@watch)
-      else
-        render :new
-      end
-    end
-  end
+  # TODO:
+  # def edit
+  #   if current_user.id == params[:user_id]
+  #     @watch.find(params[:watch_id])
+  #   end
+  # end
+  #
+  # def update
+  #   if current_user.id == params[:user_id]
+  #     @watch.find(params[:watch_id])
+  #     @watch.update_attributes(watch_params)
+  #     if @watch.save
+  #       redirect_to watch_path(@watch)
+  #     else
+  #       render :new
+  #     end
+  #   end
+  # end
 
   private
 
