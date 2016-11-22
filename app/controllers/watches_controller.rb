@@ -49,12 +49,3 @@ class WatchesController < ApplicationController
     params.require(:watch).permit(:price, :description, :name, :availability, :photo)
   end
 end
-
-
-
-  # create_table "watches", force: :cascade do |t|
-  #   t.text     "description"
-  #   t.decimal  "price"
-  #   t.string   "name"
-  #   t.boolean  "available"
-  #   t.integer  "user_id"
