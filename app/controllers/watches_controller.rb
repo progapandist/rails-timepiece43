@@ -25,6 +25,19 @@ class WatchesController < ApplicationController
     end
   end
 
+  def edit
+    @watch = Watch.find(params[:id])
+  end
+
+  def update
+    @watch = Watch.find(params[:id])
+    @watch.update(watch_params)
+    if @watch.save
+      redirect_to watch_path(@watch)
+    else
+      render :new
+    end
+  end
   # TODO:
   # def edit
   #   if current_user.id == params[:user_id]

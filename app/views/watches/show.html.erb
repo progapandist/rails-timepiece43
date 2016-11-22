@@ -10,4 +10,7 @@
   <p>Belongs to:
   <%= link_to "#{@watch.user.first_name} #{@watch.user.last_name}", user_path(@watch.user)%>
   </p>
+  <% if (user_signed_in? && (current_user.id == @watch.user_id)) %>
+    <%= link_to "Edit watch", edit_watch_path(current_user), class: "btn btn-sm btn-default"%>
+  <% end %>
 </div>
