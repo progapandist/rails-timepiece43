@@ -1,12 +1,8 @@
 class WatchesController < ApplicationController
+  skip_before_action :authenticate_user!, only: :index
+
   def index
     @watches = Watch.all
-  end
-
-  # TODO: make it a proper method, fix routing to display watches of the user
-  def user_watches
-    @user = User.find(params[:user_id])
-    @watches = @user.watches
   end
 
   def show
