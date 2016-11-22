@@ -9,7 +9,7 @@
     <div class="row">
       <% @user.watches.each do |watch| %>
         <div class="col-md-3">
-          <%= link_to user_watch_path(@user, watch) do %>
+          <%= link_to watch_path(watch) do %>
             <%= cl_image_tag watch_photo_or_stub(watch), width: 200, height: 200, crop: :fill %>
           <% end %>
         </div>
@@ -17,4 +17,3 @@
     </div>
   </div>
 </div>
-
