@@ -6,9 +6,6 @@ class BookingsController < ApplicationController
   end
 
   def owner_index
-
-    ## I need to have @bookings equal to an array with all bookings
-#
     @user = current_user
     owner_watches = @user.watches
 
