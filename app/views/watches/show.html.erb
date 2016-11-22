@@ -3,4 +3,4 @@
 <%#= @watch.user.avatar %>
 <%= @watch.user.first_name %>
 <%= @watch.user.last_name %>
-<%#= cl_image_path(@watch.image, :width => 100, :height => 150, :crop => :fill) %>
+<%= cl_image_tag watch_photo_or_stub(@watch), :width => 100, :height => 150, :crop => :fill %>
