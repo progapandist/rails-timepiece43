@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :watches
   has_many :bookings
+  has_attachment :avatar
 
   # validates :first_name, presence: true
   # validates :last_name, presence: true
