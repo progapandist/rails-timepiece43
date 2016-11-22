@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <%= simple_form_for [@user, @booking] do |f| %>
+        <%= f.input :start, :as => :string, :input_html => { :class => 'datepicker'} %>
+         <%= f.input :end, :as => :string, :input_html => { :class => 'datepicker'} %>
+        <%= f.button :submit, class: "btn btn-primary"  %>
+      <% end %>
+    </div>
+  </div>
+</div>
