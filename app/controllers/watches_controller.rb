@@ -27,6 +27,9 @@ class WatchesController < ApplicationController
 
   def edit
     @watch = Watch.find(params[:id])
+    unless current_user == @watch.user
+      redirect_to(@watch, notice: "You cannot edit this watch") and return
+    end
   end
 
   def update
