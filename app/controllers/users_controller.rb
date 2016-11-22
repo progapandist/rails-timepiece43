@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     unless current_user == @user
-      redirect_to(@user, notice: "You cannot edit this user") and return
+      redirect_to(@user, alert: "You cannot edit this user") and return
     end
   end
 
