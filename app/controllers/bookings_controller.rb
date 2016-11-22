@@ -1,18 +1,34 @@
 class BookingsController < ApplicationController
 
   def index
-    @user = User.find(params[:user_id])
-    watches_array = @user.watches.map do |watch|
-      watch.id
-    end
-    @bookings = Booking.where(watches_array.include?(watch_id))
+    @user = current_user
+    @bookings = Booking.where(user: @user)
   end
 
   def show
-    if current_user.id == params[:user_id]
-      @booking = Booking.find(params[:booking_id])
+   @booking = Booking.find(params[:id])
+  end
+
+  def new
+    @watch = Watch.find(params[:watch_id])
+    @booking = Booking.new
+  end
+
+  def create
+    @booking = Booking.new(booking_params)
+    @booking.user = current_user
+    @watch = Watch.find(params[:watch_id])
+    @booking.watch = @watch
+    if @booking.save
+      redirect_to booking_path(@booking)
     else
-      redirect_to new_user_session_path
+      render :new
     end
+  end
+
+  private
+
+  def booking_params
+    params.require(:booking).permit(:start, :end)
   end
 end
