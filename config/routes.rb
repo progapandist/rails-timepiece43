@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   resources :watches, only: [ :index, :show, :new, :create, :edit, :update ] do
     resources :bookings, only: [ :new, :create ]
@@ -14,4 +14,3 @@ Rails.application.routes.draw do
   root to: 'watches#index'
   mount Attachinary::Engine => "/attachinary"
 end
-
