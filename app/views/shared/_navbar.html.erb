@@ -43,15 +43,17 @@
         </div>
       </div>
 
+      <!-- Button (call-to-action) -->
+    <%= link_to t(".top_call_to_action", default: "Create a watch"), new_user_watch_path(current_user), class: "navbar-wagon-item navbar-wagon-button btn" %>
+
     <% else %>
 
       <!-- Login text link -->
       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
+
+
     <% end %>
+      </div>
 
-    <!-- Button (call-to-action) -->
-    <%= link_to t(".top_call_to_action", default: "Create a watch"), "#", class: "navbar-wagon-item navbar-wagon-button btn" %>
-  </div>
 </div>
-
