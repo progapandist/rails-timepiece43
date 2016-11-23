@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-xs-8 col-xs-offset-2">
         <div class="block text-center" style="background: white; border-radius: 10px; margin: 20px">
-        <p> Owner:  <%= booking.user.first_name %>
+        <p> Owner:  <%= booking.watch.user.first_name %>
         <%= booking.user.last_name %></p>
         <p> The Time Piece: <%= booking.watch.name %></p>
         <p>Booking start: <%= booking.start %> </p>
@@ -16,4 +16,3 @@
     <% end %>
   <%= link_to "Back home", watches_path, class: "fa fa-home" %>
 </div>
-

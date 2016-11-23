@@ -1,4 +1,4 @@
-<div class="wrapper" id="new_watch_wrapper">>
+<div class="wrapper" id="new_watch_wrapper">
     <div class="form-container">
       <% label = (params[:action] == "new") ? "List a timepiece" : "Update a timepiece"  %>
         <%= simple_form_for @watch do |f| %>
@@ -8,9 +8,8 @@
         <%= f.input :location %>
         <%= f.input :photo, as: :attachinary %>
         <div class="add-watch-btn">
-        <%= f.submit label, class: "btn btn-primary" %>
-        <% end %>
-      </div>
+          <%= f.submit label, class: "btn btn-primary" %>
+          <% end %>
+        </div>
     </div>
 </div>
-

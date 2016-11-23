@@ -13,12 +13,16 @@
       <p>Belongs to:
       <%= link_to "#{@watch.user.first_name} #{@watch.user.last_name}", user_path(@watch.user)%>
       </p>
+      <%# TODO: refactor to helper %>
       <% if (user_signed_in? && (current_user.id == @watch.user_id)) %>
         <%= link_to "Edit watch", edit_watch_path(@watch), class: "btn btn-sm btn-default"%>
       <% end %>
-      <%= link_to "Book this watch!", new_watch_booking_path(@watch), class: "btn btn-primary"  %>
+      <% if (user_signed_in? && (current_user.id != @watch.user_id)) %>
+        <%= link_to "Book this watch!", new_watch_booking_path(@watch), class: "btn btn-primary"  %>
+      <% end %>
     </div>
     <%# Map column %>
+    <%# TODO: refactor to partial %>
     <div class="col-xs-12 col-md-6">
       <%# Only display map if watch has coordinates %>
       <% unless @watch.location.blank? %>
