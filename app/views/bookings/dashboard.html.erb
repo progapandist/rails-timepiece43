@@ -1,0 +1,80 @@
+<div class="banner-dashboard" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= cl_image_path"unkz1zlofox8pjqec424" %>)">
+    <%= cl_image_tag user_avatar_or_stub(@user), class: "avatar-large"%>
+    <p><%= @user.first_name %> <%= @user.last_name %></p>
+    <%= link_to "Edit profile", edit_user_path(@user) %>
+  </div>
+</div>
+
+<h1 class="text-center">Your bookings</h1>
+<div class="your-bookings">
+  <table>
+    <th class="text-center">Status</th>
+    <th class="text-center">Watch name</th>
+    <th class="text-center">Start of booking</th>
+    <th class="text-center">End of booking</th>
+    <th class="text-center">User</th>
+    <th class="text-center">Action</th>
+    <% @bookings.each do |booking| %>
+    <tr>
+      <td class="text-center"><%= booking.status %></td>
+      <td class="text-center"><%= booking.watch.name %></td>
+      <td class="text-center"><%= booking.start %></td>
+      <td class="text-center"><%= booking.end %></td>
+      <td class="text-center"><%=  link_to booking.user.first_name , user_path(booking.user)%> </td>
+      <td class="text-center">
+        <% if booking.status == "pending" %>
+        <%= link_to "Accept the booking", accept_booking_path(booking), class: "btn btn-primary"  %>
+        <%= link_to "Decline the booking", reject_booking_path(booking), class: "btn btn-danger"  %>
+        <% end %>
+
+        <% if booking.status == "accepted" %>
+        <%= link_to "Decline the booking", reject_booking_path(booking), class: "btn btn-danger"  %>
+        <% end %>
+
+        <% if booking.status == "declined" %>
+        <%= link_to "Accept the booking", accept_booking_path(booking), class: "btn btn-primary"  %>
+        <% end %></td>
+      </tr>
+
+      <% end %>
+    </table>
+  </div>
+
+  <br>
+
+<h1 class="text-center">Your watches</h1>
+<div class="your-watches">
+  <div class="container">
+    <div class="row">
+      <% @user.watches.each do |watch|%>
+      <div class="col-xs-3">
+        <div class="dashboard-card">
+          <div class="dashboard-card-body">
+          <div class="dashboard-card-picture" style="background-image: url('<%= cl_image_path watch_photo_or_stub(watch)%>')">
+          </div>
+            <div class="dashboard-card-hover text-center">
+              <h4><%= watch.name %></h4>
+              <p><%= watch.description %></p>
+              <%= link_to "", watch_path(watch), class: "dashboard-card-link" %>
+            </div>
+            <div class="dashboard-card-price">
+              <ul class="list-inline">
+                <li><i class="fa fa-money"></i> <%= watch.price %>€/day</li>
+                <li><i class="fa fa-eye"></i> Rented: <% if watch.bookings.count > 1%><%= watch.bookings.count %> times <% else %><%= watch.bookings.count %> time<% end %></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  <br><br><br>
+
+

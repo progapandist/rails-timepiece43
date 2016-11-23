@@ -5,7 +5,7 @@ class BookingsController < ApplicationController
     @bookings = Booking.where(user: @user)
   end
 
-  def owner_index
+  def dashboard
     @user = current_user
     owner_watches = @user.watches
 
@@ -28,14 +28,14 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @booking.status = "accepted"
     @booking.save
-    redirect_to owner_bookings_path
+    redirect_to dashboard_path
   end
 
   def rejected
     @booking = Booking.find(params[:id])
     @booking.status = "declined"
     @booking.save
-    redirect_to owner_bookings_path
+    redirect_to dashboard_path
   end
 
   def show
