@@ -23,3 +23,38 @@
 .bg-dark-blue {
   background: #3b5998;
 }
+
+.box {
+  padding: 50px;
+  background-color: white;
+  border-radius: 5px;
+  border-color: #EEF1F4;
+}
+
+.wrapper {
+  width: 100%;
+  background-color: #F2F4F7;
+  min-height: calc(100vh - 70px);
+}
+
+#new_watch_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px;
+}
+
+.form-container {
+  padding: 24px 40px;
+  background-color: #fff;
+  border-radius: .3125em;
+  border: 1px solid #dce3e6;
+  width: 50%;
+  @media(max-width: $screen-sm) {
+    width: 90%;
+  }
+}
+
+.add-watch-btn {
+ text-align: center;
+}
