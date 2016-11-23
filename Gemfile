@@ -23,6 +23,9 @@ source "https://rails-assets.org" do
   gem 'rails-assets-bootstrap-datepicker'
 end
 
+# Maps
+gem 'geocoder'
+
 # Image management
 gem 'cloudinary', '1.1.0'
 gem "attachinary"
