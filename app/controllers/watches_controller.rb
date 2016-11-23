@@ -7,6 +7,13 @@ class WatchesController < ApplicationController
 
   def show
     @watch = Watch.find(params[:id])
+
+    # Map logic. Use plural to be consistent with Gmaps4rails handler functionality
+    @map_markers = [{
+      lat: @watch.latitude,
+      lng: @watch.longitude,
+    }]
+
   end
 
   def new
