@@ -8,7 +8,7 @@ class WatchesController < ApplicationController
   def show
     @watch = Watch.find(params[:id])
 
-    # Map logic.
+    # Circle info for the map
     @map_circle = {
       lat: @watch.latitude,
       lng: @watch.longitude,

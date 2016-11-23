@@ -22,7 +22,8 @@
     <div class="col-xs-12 col-md-6">
       <%# Only display map if watch has coordinates %>
       <% unless @watch.location.blank? %>
-      <%# Map div %>
+      <%# Map html %>
+      <h3>This watch location</h3>
       <div id="map" style="width: 100%; height: 600px;"></div>
         <%# Map logic %>
         <% content_for(:after_js) do %>
