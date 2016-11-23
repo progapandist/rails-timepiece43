@@ -1,6 +1,6 @@
 <div class="container">
   <h1 class=" text-center">Your Bookings:</h1>
-  <% @bookings.each do |booking| %>
+  <% @bookings.each.reverse do |booking| %>
     <div class="row">
       <div class="col-xs-8 col-xs-offset-2">
         <div class="block text-center" style="background: white; border-radius: 10px; margin: 20px">
@@ -9,6 +9,7 @@
         <p> The Time Piece: <%= booking.watch.name %></p>
         <p>Booking start: <%= booking.start %> </p>
         <p>Booking end:  <%= booking.end %> </p>
+        <p>Booking status: <%= booking.status %></p>
         </div>
       </div>
     </div>
