@@ -23,6 +23,14 @@ source "https://rails-assets.org" do
   gem 'rails-assets-bootstrap-datepicker'
 end
 
+# Maps
+gem "geocoder"
+gem "gmaps4rails"
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
+
+
 # Image management
 gem 'cloudinary', '1.1.0'
 gem "attachinary"

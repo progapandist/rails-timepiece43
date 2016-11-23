@@ -7,6 +7,14 @@ class WatchesController < ApplicationController
 
   def show
     @watch = Watch.find(params[:id])
+
+    # Circle info for the map
+    @map_circle = {
+      lat: @watch.latitude,
+      lng: @watch.longitude,
+      radius: 500
+    }
+
   end
 
   def new
@@ -45,6 +53,6 @@ class WatchesController < ApplicationController
   private
 
   def watch_params
-    params.require(:watch).permit(:price, :description, :name, :availability, :photo)
+    params.require(:watch).permit(:price, :description, :name, :availability, :photo, :location)
   end
 end

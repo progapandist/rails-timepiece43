@@ -1,18 +1,55 @@
 <div class="container">
-  <h1><%= @watch.name %></h1>
-  <h3>Description: </h3>
-  <p>
-    <%= @watch.description %>
-  </p>
-  <div>
-    <%= cl_image_tag watch_photo_or_stub(@watch), :width => 300, :height => 300, :crop => :fill %>
+  <div class="row">
+    <%# Info column %>
+    <div class="col-xs-12 col-md-6">
+      <h1><%= @watch.name %></h1>
+      <h3>Description: </h3>
+      <p>
+        <%= @watch.description %>
+      </p>
+      <div>
+        <%= cl_image_tag watch_photo_or_stub(@watch), :width => 300, :height => 300, :crop => :fill %>
+      </div>
+      <p>Belongs to:
+      <%= link_to "#{@watch.user.first_name} #{@watch.user.last_name}", user_path(@watch.user)%>
+      </p>
+      <% if (user_signed_in? && (current_user.id == @watch.user_id)) %>
+        <%= link_to "Edit watch", edit_watch_path(@watch), class: "btn btn-sm btn-default"%>
+      <% end %>
+      <%= link_to "Book this watch!", new_watch_booking_path(@watch), class: "btn btn-primary"  %>
+    </div>
+    <%# Map column %>
+    <div class="col-xs-12 col-md-6">
+      <%# Only display map if watch has coordinates %>
+      <% unless @watch.location.blank? %>
+      <%# Map html %>
+      <h3>This watch location</h3>
+      <div id="map" style="width: 100%; height: 600px;"></div>
+        <%# Map logic %>
+        <% content_for(:after_js) do %>
+        <script>
+          $(document).ready(function() {
+            var handler = Gmaps.build('Google');
+            handler.buildMap({ internal: { id: 'map' } }, function() {
+
+              var circles = handler.addCircles(
+                [<%= raw @map_circle.to_json %>],
+                { strokeColor: '#cd6b6b'}
+              );
+              //handler.bounds.extendWith(markers);
+              handler.bounds.extendWith(circles);
+              handler.fitMapToBounds();
+              if (circles.length == 0) {
+                handler.getMap().setZoom(2);
+              } else if (circles.length == 1) {
+                handler.getMap().setZoom(14);
+              }
+            });
+          });
+        </script>
+        <% end %>
+      <% end %>
+    </div>
   </div>
-  <p>Belongs to:
-  <%= link_to "#{@watch.user.first_name} #{@watch.user.last_name}", user_path(@watch.user)%>
-  </p>
-  <% if (user_signed_in? && (current_user.id == @watch.user_id)) %>
-    <%= link_to "Edit watch", edit_watch_path(@watch), class: "btn btn-sm btn-default"%>
-  <% end %>
+
 </div>
-<%= link_to "Book this watch!", new_watch_booking_path(@watch)%>
-<br>
