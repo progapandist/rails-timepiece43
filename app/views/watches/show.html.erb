@@ -30,12 +30,17 @@
           $(document).ready(function() {
             var handler = Gmaps.build('Google');
             handler.buildMap({ internal: { id: 'map' } }, function() {
-              markers = handler.addMarkers(<%= raw @map_markers.to_json %>);
-              handler.bounds.extendWith(markers);
+
+              var circles = handler.addCircles(
+                [<%= raw @map_circle.to_json %>],
+                { strokeColor: '#cd6b6b'}
+              );
+              //handler.bounds.extendWith(markers);
+              handler.bounds.extendWith(circles);
               handler.fitMapToBounds();
-              if (markers.length == 0) {
+              if (circles.length == 0) {
                 handler.getMap().setZoom(2);
-              } else if (markers.length == 1) {
+              } else if (circles.length == 1) {
                 handler.getMap().setZoom(14);
               }
             });
