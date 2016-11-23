@@ -49,20 +49,21 @@
 }
 
 /* Navbar right button */
-.navbar-wagon-button {
+
+.navbar-timepiece-button {
   margin-left: 10px;
   padding: 0 20px;
-  border-radius: 20em;
+  border-radius: 1px;
   line-height: 40px;
-  background-color: #D23333;
+  background-color: rgb(1, 56, 99);
   color: white;
   font-size: 14px;
-  border: 2px solid #D23333;
+  border: 2px solid rgb(1, 56, 99);
 }
-.navbar-wagon-button:hover {
+.navbar-timepiece-button:hover {
   color: white;
-  background: #D23333;
-  border-color: #ac2626;
+  background: rgb(10, 49, 79);
+  border-color: rgb(10, 49, 79);
 }
 
 /* Navbar search form */
