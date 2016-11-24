@@ -45,6 +45,21 @@ class BookingsController < ApplicationController
   def new
     @watch = Watch.find(params[:watch_id])
     @booking = Booking.new
+
+    # TODO: Remove this code later if we never use separate new booking form
+    # Get all booked ranges in an array of Ranges with Dates
+    date_ranges_taken = []
+    @watch.bookings.each do |b|
+      date_ranges_taken << (b.start_date..b.end_date)
+    end
+
+    # generate an array of strings in dd/mm/yyyy
+    @dates_taken = []
+    date_ranges_taken.each do |r|
+      r.each do |date|
+        @dates_taken << date.strftime('%d/%m/%Y')
+      end
+    end
   end
 
   def create
@@ -55,13 +70,14 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to booking_path(@booking)
     else
-      render :new
+      flash[:alert] = "End date should be later than the start. One night minimum"
+      redirect_to watch_path(@watch)
     end
   end
 
   private
 
   def booking_params
-    params.require(:booking).permit(:start, :end)
+    params.require(:booking).permit(:start_date, :end_date)
   end
 end
