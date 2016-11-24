@@ -1,0 +1,11 @@
+<div class="booking <%= booking_class %>">
+  <%= cl_image_tag watch_photo_or_stub(booking.watch), class:"booking-image hidden-xs" %>
+  <div class='booking-body'>
+    <h3><%= booking.watch.name %></h3>
+    <p>Booking from <%= booking.start %> to <%= booking.end %></p>
+    <p><%= booking.watch.description %></p>
+    <p>Booking <%= booking.status %></p>
+  </div>
+  <%= booking_links(booking) %>
+  <%= cl_image_tag user_avatar_or_stub(booking.user),class:"avatar-large hidden-xs popover-target" %>
+</div>
