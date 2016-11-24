@@ -1,12 +1,13 @@
+# TODO: Refactor hiding into private methods and before_action
+
 class WatchesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
 
   def index
-    params[:search] = nil if params[:search] == ""
-    if params[:search] == nil
+    if params[:search].blank?
       @watches = Watch.order(created_at: :desc).where(hidden: false)
-    elsif params[:search] != nil
-       @watches = Watch.where("name ILIKE ?", "%#{params[:search]}%")
+    else
+       @watches = Watch.where("name ILIKE ?", "%#{params[:search]}%").where(hidden: false)
     end
   end
 
