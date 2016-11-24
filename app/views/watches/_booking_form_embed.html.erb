@@ -1,26 +1,23 @@
-<div class="container">
-  <h4>Check availability and book</h4>
-  <p>Booked dates will not be available</p>
-  <div class="row">
-    <div class="col-md-4">
-      <%= simple_form_for [@watch, @booking] do |f| %>
-        <%= f.input :start_date, :as => :string, :input_html => { :class => 'datepicker date-start'} %>
-         <%= f.input :end_date, :as => :string, :input_html => { :class => 'datepicker date-end'} %>
+<div class="booking-box">
+  <h4 class="text-center">Check availability and book</h4>
+    <p class="text-center">Booked dates will not be available</p>
+    <%= simple_form_for [@watch, @booking] do |f| %>
+      <%= f.input :start_date, :as => :string, :input_html => { :class => 'datepicker date-start'} %>
+       <%= f.input :end_date, :as => :string, :input_html => { :class => 'datepicker date-end'} %>
+         <div class="text-center">
         <%= f.button :submit, "Book this watch", class: "btn btn-primary"  %>
-      <% end %>
-    </div>
-  </div>
+        </div>
+    <% end %>
 </div>
+  <%= content_for :after_js do %>
+    <script>
 
-<%= content_for :after_js do %>
-  <script>
-
-    $(document).ready(function() {
-      $('.datepicker').datepicker({
-        todayHighlight: true,
-        datesDisabled: <%= raw @dates_taken.to_json %>
+      $(document).ready(function() {
+        $('.datepicker').datepicker({
+          todayHighlight: true,
+          datesDisabled: <%= raw @dates_taken.to_json %>
+        });
       });
-    });
 
-  </script>
-<% end %>
+    </script>
+  <% end %>
