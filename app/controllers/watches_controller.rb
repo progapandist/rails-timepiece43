@@ -2,7 +2,12 @@ class WatchesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
 
   def index
-    @watches = Watch.order(created_at: :desc).where(hidden: false)
+    params[:search] = nil if params[:search] == ""
+    if params[:search] == nil
+      @watches = Watch.order(created_at: :desc).where(hidden: false)
+    elsif params[:search] != nil
+       @watches = Watch.where("name ILIKE ?", "%#{params[:search]}%")
+    end
   end
 
   def show
