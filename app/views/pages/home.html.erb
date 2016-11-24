@@ -3,7 +3,7 @@
     <h1>Feel history on your wrist </h1>
      <% if (user_signed_in?) %>
     <a><%= link_to "Add your watch", new_watch_path(@watch), class: "home-button btn btn-primary btn-lg" %></a>
-     <a href="#watches" class="home-button btn btn-primary btn-lg" > Find inspiration</a>
+     <a> <%= link_to 'Find inspiration', watches_path, class: "home-button btn btn-primary btn-lg" %></a>
       <% else  %>
     <a><%= link_to "Sign up", new_user_registration_path, class: " home-button btn btn-primary btn-lg" %></a>
     <% end %>
