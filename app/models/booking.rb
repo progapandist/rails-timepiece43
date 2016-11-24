@@ -12,6 +12,11 @@ class Booking < ApplicationRecord
 
   def declined?
     status == "declined"
+  end
+
+  def past?
+    self.end_date < Date.today
+  end
 
   # Make sure end is earlier than the start
   validate :start_is_earlier_than_end

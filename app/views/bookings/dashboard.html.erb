@@ -6,10 +6,9 @@
 </div>
 
 <h1 class="text-center">Your bookings</h1>
-</div>
-<div class="bookings">
+<div class="container">
   <% @bookings.each do |booking| %>
-    <%= render "booking_row", booking: booking, booking_class: booking_background(booking) %>
+    <%= render "booking_row", booking: booking %>
   <% end %>
 </div>
 
