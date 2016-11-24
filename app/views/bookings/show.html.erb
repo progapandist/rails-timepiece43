@@ -1,14 +1,14 @@
-<h1>Your current Booking</h1>
+<%# TODO: don't forget to calculate the price! %>
 
-  <p><strong>The Watch:</strong>
-    <%=@booking.watch.name%>
-  </p>
-  <p> <strong>Start Date:</strong>
-    <%=@booking.start_date%>
-  </p>
-  <p> <strong>End Date:</strong>
-    <%=@booking.end_date%>
-  </p>
-  <p> <strong>The Owner:</strong>
-    <%=@booking.watch.user.first_name%>
-  </p>
+<div class="container">
+  <%= link_to "Show me other timepieces", watches_path, class: "btn btn-primary" %>
+  <h1>Congrats!</h1>
+  <p>Thank you for your interest in one of our unique timepices. Its owner will confirm your booking shortly<p>
+    <%= cl_image_tag @booking.watch.photo.path, width: 200, height: 300 %>
+    <h2> <%= "#{@booking.watch.user.first_name}'s #{@booking.watch.name}"%></h2>
+    <p> <strong>Is yours on:</strong>
+      <%= "#{@booking.start_date.strftime('%d/%m/%Y')} - #{@booking.end_date.strftime('%d/%m/%Y')}"%>
+    <h3>You're paying: <%= "#{booking_price(@booking)}€" %></h3>
+    <h4>You'll pick it up here</h4>
+    <%= render 'map-recap', watch: @watch, map_circle: @map_circle %>
+</div>

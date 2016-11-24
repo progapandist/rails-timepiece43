@@ -39,6 +39,14 @@ class BookingsController < ApplicationController
 
   def show
    @booking = Booking.find(params[:id])
+   @watch = @booking.watch
+
+   # Circle info for the map
+   @map_circle = {
+     lat: @watch.latitude,
+     lng: @watch.longitude,
+     radius: 500
+   }
   end
 
   def new
