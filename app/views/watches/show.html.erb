@@ -1,6 +1,3 @@
-<%# TODO: add delete button for own watches %>
-<%# TODO: make sure logged out user sees "login in order to book" stub %>
-
 <div class="container">
   <div class="row">
     <%# Info column %>
@@ -23,6 +20,10 @@
       <% end %>
       <% if (user_signed_in? && (current_user.id != @watch.user_id)) %>
         <%= render 'watches/booking_form_embed' %>
+      <% else %>
+        <p>
+        <%= link_to "Log in to book this watch!", new_user_session_path, class: "btn btn-primary"%>
+        </p>
       <% end %>
     </div>
     <%= render 'watches/map', watch: @watch, map_circle: @map_circle %>
