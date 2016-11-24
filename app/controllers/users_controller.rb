@@ -8,14 +8,14 @@ class UsersController < ApplicationController
 
     @reviews_as_a_user = []
     all_reviews.each do |review|
-      if user_id(review) == params[:id]
+      if user_id(review) == params[:id].to_i
         @reviews_as_a_user << review
       end
     end
 
     @reviews_as_an_owner = []
     all_reviews.each do |review|
-      if owner_id(review) == params[:id]
+      if owner_id(review) == params[:id].to_i
         @reviews_as_an_owner << review
       end
     end

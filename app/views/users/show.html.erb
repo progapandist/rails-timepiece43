@@ -40,7 +40,33 @@
     </div>
   </div>
 
-<%= @reviews_as_an_owner.each do |review| %>
+<div class="container">
+<% if @reviews_as_an_owner.length != 0 %>
+<h1 class="text-center"><%= @user.first_name %>'s reviews as a Timepiece owner</h1>
+  <% @reviews_as_an_owner.each do |review| %>
+  <div class="booking">
+    <%= cl_image_tag watch_photo_or_stub(review.booking.watch), class:"booking-image hidden-xs" %>
+    <div class='booking-body'>
+      <p>Booking from <%= review.booking.start_date %> to <%= review.booking.end_date %></p>
+      <p><%= review.title %></p>
+      <p><%= review.content %></p>
+      <p><% review.rating.times do %><i class="fa fa-star"></i><% end %></p>
+    </div>
+    <div class="user-photo-booking">
+      <%= cl_image_tag user_avatar_or_stub(review.booking.watch.user),class:"avatar-large hidden-xs" %>
+      <%= link_to "", user_path(review.booking.user), class: "card-link"  %>
+    </div>
+  </div>
+  <% end %>
+<% end %>
+</div>
+
+
+<div class="container">
+
+<% if @reviews_as_a_user.length != 0 %>
+<h1 class="text-center"><%= @user.first_name %>'s reviews as a Timepiece user</h1>
+  <% @reviews_as_a_user.each do |review| %>
   <div class="booking">
     <%= cl_image_tag watch_photo_or_stub(review.booking.watch), class:"booking-image hidden-xs" %>
     <div class='booking-body'>
@@ -49,9 +75,10 @@
       <p><%= review.content %></p>
     </div>
     <div class="user-photo-booking">
-    <%= cl_image_tag user_avatar_or_stub(review.booking.watch.user),class:"avatar-large hidden-xs" %>
-    <%= link_to "", user_path(review.booking.user), class: "card-link"  %>
+      <%= cl_image_tag user_avatar_or_stub(review.booking.watch.user),class:"avatar-large hidden-xs" %>
+      <%= link_to "", user_path(review.booking.user), class: "card-link"  %>
     </div>
   </div>
+  <% end %>
 <% end %>
-
+</div>
