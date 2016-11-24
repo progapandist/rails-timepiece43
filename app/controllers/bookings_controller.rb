@@ -46,7 +46,7 @@ class BookingsController < ApplicationController
     @watch = Watch.find(params[:watch_id])
     @booking = Booking.new
 
-    # TODO: Remove this code later if we never use separate new booking form 
+    # TODO: Remove this code later if we never use separate new booking form
     # Get all booked ranges in an array of Ranges with Dates
     date_ranges_taken = []
     @watch.bookings.each do |b|
