@@ -1,6 +1,6 @@
 class BookingMailerPreview < ActionMailer::Preview
   def pending
-    user = User.first
-    BookingMailer.pending(user).deliver_now
+    booking = Booking.first
+    BookingMailer.pending(booking).deliver_now
   end
 end

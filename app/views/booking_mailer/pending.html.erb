@@ -7,10 +7,15 @@
 <p>
   The owner will contact you very soon.
 </p>
-
-<br>
 <h2>Your current Booking</h2>
 <br>
+
+  <img src="<% if @booking.watch.photo? %>
+      <%= cloudinary_url @booking.watch.photo.path %>
+      <%end%>">
+
+<br>
+
 <p><strong>Watch name - </strong>
   <%=@booking.watch.name%>
 </p>
