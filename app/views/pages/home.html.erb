@@ -11,7 +11,7 @@
    <div class="search-bar">
     <%= form_tag(watches_path, :method => "get", class: "navbar-wagon-search", id: "search-form") do %>
         <%= text_field_tag :search, params[:search], placeholder: "Search for a Timepiece", class: "form-control border-radius" %>
-        <button type="submit" class="btn btn-danger"><i class="fa fa-search"></i>  SEARCH</button>
+        <button type="submit" class="btn-mine"><i class="fa fa-search"></i>  SEARCH</button>
       <% end %>
     </div>
   </div>
