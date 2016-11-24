@@ -9,5 +9,11 @@ class Watch < ApplicationRecord
   has_attachment :photo
 
   geocoded_by :location
-  after_validation :geocode, if: :location_changed? 
+  after_validation :geocode, if: :location_changed?
+
+  before_save :default_value
+
+  def default_value
+    self.hidden ||= false
+  end
 end

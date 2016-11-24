@@ -6,15 +6,16 @@ class WatchesController < ApplicationController
   end
 
   def show
-    @watch = Watch.find(params[:id])
+    if Watch.find(params[:id]).hidden == false
+        @watch = Watch.find(params[:id])
 
-    # Circle info for the map
-    @map_circle = {
-      lat: @watch.latitude,
-      lng: @watch.longitude,
-      radius: 500
-    }
-
+      # Circle info for the map
+      @map_circle = {
+        lat: @watch.latitude,
+        lng: @watch.longitude,
+        radius: 500
+      }
+    end
   end
 
   def new
@@ -50,10 +51,11 @@ class WatchesController < ApplicationController
     end
   end
 
-  def delete
+  def hide
     @watch = Watch.find(params[:id])
     @watch.hidden = true
     @watch.save
+    redirect_to :index
   end
 
   private
