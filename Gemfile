@@ -31,7 +31,7 @@ source 'https://rails-assets.org' do
 end
 
 #mailer
-gem "letter_opener", group: :development
+gem "letter_opener"
 
 # Image management
 gem 'cloudinary', '1.1.0'
