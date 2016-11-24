@@ -1,3 +1,6 @@
+<%# TODO: add delete button for own watches %>
+<%# TODO: make sure logged out user sees "login in order to book" stub %>
+
 <div class="container">
   <div class="row">
     <%# Info column %>
@@ -18,8 +21,8 @@
         <%= link_to "Edit watch", edit_watch_path(@watch), class: "btn btn-sm btn-default"%>
       <% end %>
       <% if (user_signed_in? && (current_user.id != @watch.user_id)) %>
-        <%= render 'booking_form_embed' %>
+        <%= render 'watches/booking_form_embed' %>
       <% end %>
     </div>
-    <%= render 'map', watch: @watch, map_circle: @map_circle %>
+    <%= render 'watches/map', watch: @watch, map_circle: @map_circle %>
 </div>

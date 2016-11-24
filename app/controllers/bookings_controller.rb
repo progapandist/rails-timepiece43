@@ -69,7 +69,8 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to booking_path(@booking)
     else
-      render :new
+      flash[:alert] = "End date should be later than the start. One night minimum"
+      redirect_to watch_path(@watch)
     end
   end
 
