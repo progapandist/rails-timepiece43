@@ -30,8 +30,6 @@ source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
 end
 
-#mailer
-gem "letter_opener"
 
 # Image management
 gem 'cloudinary', '1.1.0'
