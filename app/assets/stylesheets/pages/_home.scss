@@ -2,3 +2,50 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
+.search-bar {
+margin-top: 20px;
+}
+
+
+.btn{
+
+ vertical-align: top;
+ transition: all 0.5s;
+ border-radius: 5px;
+ text-decoration: none;
+}
+
+#inputcolor{
+color: rgb(112, 112, 112);
+}
+
+.input-lg{
+  border-radius: 5px;
+}
+
+.btn-mine{
+text-transform: uppercase;
+letter-spacing: 2px;
+text-align: center;
+font-size: 18px;
+// font-family: 'montserrat';
+margin: 0 auto;
+width: 118px;
+height: 48.99px;
+background-color: $blue;
+border: 1px solid $blue;
+color: #FFF;
+overflow: hidden;
+transition: all 0.5s;
+vertical-align: top;
+}
+
+
+.btn-mine:hover, .btn-mine:active{
+
+text-decoration: none;
+color: $blue;
+border-color: $blue;
+background: #FFF;
+
+}
