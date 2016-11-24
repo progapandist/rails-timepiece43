@@ -13,3 +13,12 @@
         </div>
     </div>
 </div>
+
+<% content_for :after_js do -%>
+  <script type="text/javascript">
+    $(function () {
+      var location_field = $('#watch_location').get(0)
+      var autocomplete = new google.maps.places.Autocomplete(location_field, { types: ['geocode'] });
+    });
+  </script>
+<% end -%>
