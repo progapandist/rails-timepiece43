@@ -1,0 +1,12 @@
+<div class="booking">
+  <%= cl_image_tag watch_photo_or_stub(booking.watch), class:"booking-image hidden-xs" %>
+  <div class='booking-body'>
+    <p>Booking from <%= booking.start_date %> to <%= booking.end_date %></p>
+    <p><%= booking.watch.description %></p>
+    <p>Booking <%= booking.status %></p>
+  </div>
+  <div class="user-photo-booking">
+  <%= cl_image_tag user_avatar_or_stub(booking.watch.user),class:"avatar-large hidden-xs" %>
+  <%= link_to "", user_path(booking.user), class: "card-link"  %>
+  </div>
+</div>

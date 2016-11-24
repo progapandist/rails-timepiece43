@@ -8,6 +8,7 @@ class BookingsController < ApplicationController
   def dashboard
     @user = current_user
     owner_watches = @user.watches
+    @bookings_user = Booking.order(:start_date).where(user: current_user)
 
     owner_watches_ids = owner_watches.map do |watch|
       watch.id
@@ -15,13 +16,11 @@ class BookingsController < ApplicationController
 
     @bookings = []
     @user = current_user
-    Booking.all.each do |booking|
+    Booking.order(:start_date).each do |booking|
       if owner_watches_ids.include?(booking.watch.id)
         @bookings << booking
       end
     end
-
-
   end
 
   def accepted

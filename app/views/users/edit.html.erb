@@ -9,7 +9,7 @@
         <%= f.submit "Change info!", class: "btn btn-primary" %>
       <% end %>
 
-      <% if current_user %>
+      <% if @user.token.nil? %>
       <%= link_to "Edit password",  edit_user_registration_path(current_user) , {class: "btn btn-danger"} %>
       <% end %>
     </div>

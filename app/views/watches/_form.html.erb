@@ -6,10 +6,19 @@
         <%= f.input :description %>
         <%= f.input :price, :label => "Price /day" %>
         <%= f.input :location %>
-        <%= f.input :photo, as: :attachinary %>
+        <%= f.input :photo, as: :attachinary, class: "btn btn-default" %>
         <div class="add-watch-btn">
           <%= f.submit label, class: "btn btn-primary" %>
           <% end %>
         </div>
     </div>
 </div>
+
+<% content_for :after_js do -%>
+  <script type="text/javascript">
+    $(function () {
+      var location_field = $('#watch_location').get(0)
+      var autocomplete = new google.maps.places.Autocomplete(location_field, { types: ['geocode'] });
+    });
+  </script>
+<% end -%>
