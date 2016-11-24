@@ -7,26 +7,28 @@
 </div>
 </div>
 
-
+<% if @bookings.length != 0 %>
 <h1 class="text-center">Your watches are booked:</h1>
 <div class="container">
   <% @bookings.each do |booking| %>
     <%= render "booking_row_owner", booking: booking %>
   <% end %>
 </div>
+<% end %>
 
 <br>
 
 
-
+<% if @bookings_user.length != 0 %>
 <div class="container">
   <h1 class=" text-center">Your bookings:</h1>
-  <% @bookings.each do |booking| %>
+  <% @bookings_user.each do |booking| %>
     <div class="row">
       <%= render "booking_row_user", booking: booking %>
     </div>
     <% end %>
 </div>
+<% end %>
 
 
 <h1 class="text-center">Your watches</h1>
@@ -42,11 +44,5 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-<br><br><br>
 
 
