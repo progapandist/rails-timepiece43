@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(version: 20161124110052) do
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.date     "start"
-    t.date     "end"
+    t.date     "start_date"
+    t.date     "end_date"
     t.integer  "watch_id"
     t.integer  "user_id"
     t.datetime "created_at",                     null: false

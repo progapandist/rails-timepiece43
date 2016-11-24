@@ -1,0 +1,34 @@
+<%# Map column %>
+<%# TODO: refactor to partial %>
+<div class="col-xs-12 col-md-6">
+  <%# Only display map if watch has coordinates %>
+  <% unless watch.location.blank? %>
+  <%# Map html %>
+  <h3>This watch location</h3>
+  <div id="map" style="width: 100%; height: 600px;"></div>
+    <%# Map logic %>
+    <% content_for(:after_js) do %>
+    <script>
+      $(document).ready(function() {
+        var handler = Gmaps.build('Google');
+        handler.buildMap({ internal: { id: 'map' } }, function() {
+
+          var circles = handler.addCircles(
+            [<%= raw map_circle.to_json %>],
+            { strokeColor: '#cd6b6b'}
+          );
+          //handler.bounds.extendWith(markers);
+          handler.bounds.extendWith(circles);
+          handler.fitMapToBounds();
+          if (circles.length == 0) {
+            handler.getMap().setZoom(2);
+          } else if (circles.length == 1) {
+            handler.getMap().setZoom(14);
+          }
+        });
+      });
+    </script>
+    <% end %>
+  <% end %>
+</div>
+</div>
