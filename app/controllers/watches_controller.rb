@@ -2,7 +2,7 @@ class WatchesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
 
   def index
-    @watches = Watch.order(created_at: :desc).where(:hidden == false)
+    @watches = Watch.order(created_at: :desc).where(hidden: false)
   end
 
   def show
@@ -73,7 +73,7 @@ class WatchesController < ApplicationController
     @watch = Watch.find(params[:id])
     @watch.hidden = true
     @watch.save
-    redirect_to :index
+    redirect_to watches_path
   end
 
   private
