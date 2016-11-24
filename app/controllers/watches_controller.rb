@@ -50,6 +50,12 @@ class WatchesController < ApplicationController
     end
   end
 
+  def delete
+    @watch = Watch.find(params[:id])
+    @watch.hidden = true
+    @watch.save
+  end
+
   private
 
   def watch_params
