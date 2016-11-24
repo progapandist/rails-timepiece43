@@ -18,7 +18,7 @@
         <%= link_to "Edit watch", edit_watch_path(@watch), class: "btn btn-sm btn-default"%>
       <% end %>
       <% if (user_signed_in? && (current_user.id != @watch.user_id)) %>
-        <%= link_to "Book this watch!", new_watch_booking_path(@watch), class: "btn btn-primary"  %>
+        <%= render 'booking_form_embed' %>
       <% end %>
     </div>
     <%# Map column %>
