@@ -4,7 +4,6 @@ class Booking < ApplicationRecord
 
  # Make sure end is earlier than the start
   validate :start_is_earlier_than_end
-  after_create :send_pending_email
 
   def accepted?
     status == "accepted"
@@ -29,8 +28,4 @@ class Booking < ApplicationRecord
     end
   end
 
-  private
-  def send_pending_email
-    BookingMailer.pending(self).deliver_now
-  end
 end
