@@ -20,23 +20,7 @@
     <div class="row">
       <% @user.watches.each do |watch|%>
       <div class="col-xs-3">
-        <div class="dashboard-card">
-          <div class="dashboard-card-body">
-            <div class="dashboard-card-picture" style="background-image: url('<%= cl_image_path watch_photo_or_stub(watch)%>')">
-            </div>
-            <div class="dashboard-card-hover text-center">
-              <h4><%= watch.name %></h4>
-              <p><%= watch.description %></p>
-              <%= link_to "", watch_path(watch), class: "dashboard-card-link" %>
-            </div>
-            <div class="dashboard-card-price">
-              <ul class="list-inline">
-                <li><i class="fa fa-money"></i> <%= watch.price %>€/day</li>
-                <li><i class="fa fa-eye"></i> Rented: <% if watch.bookings.count > 1%><%= watch.bookings.count %> times <% else %><%= watch.bookings.count %> time<% end %></li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        <%= render "shared/watch_card", watch: watch %>
       </div>
       <% end %>
     </div>
