@@ -10,10 +10,4 @@ class Watch < ApplicationRecord
 
   geocoded_by :location
   after_validation :geocode, if: :location_changed?
-
-  before_save :default_value
-
-  def default_value
-    self.hidden ||= false
-  end
 end

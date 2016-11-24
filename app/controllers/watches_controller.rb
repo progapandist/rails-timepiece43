@@ -2,7 +2,7 @@ class WatchesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
 
   def index
-    @watches = Watch.order(created_at: :desc)
+    @watches = Watch.order(created_at: :desc).where(:hidden == false)
   end
 
   def show
