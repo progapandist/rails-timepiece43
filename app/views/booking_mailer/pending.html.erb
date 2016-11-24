@@ -1,0 +1,30 @@
+<h1>Dear <%= @booking.user.first_name %>,</h1>
+
+<br>
+<p>
+  We confirm you that your <strong>booking<strong> has been registered
+</p>
+<p>
+  The owner will contact you very soon.
+</p>
+
+<br>
+<h2>Your current Booking</h2>
+<br>
+<p><strong>Watch name - </strong>
+  <%=@booking.watch.name%>
+</p>
+<p> <strong>Rental: </strong>  from <%=@booking.start%> - to
+  <%=@booking.end%>
+</p>
+<p> <strong>The Owner is</strong>
+  <%=@booking.watch.user.first_name%>
+</p>
+
+<br>
+<p>Have a wonderful time today!
+</p>
+<h2>
+Timepiece
+</h2>
+
