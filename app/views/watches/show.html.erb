@@ -17,13 +17,10 @@
       <% if (user_signed_in? && (current_user.id == @watch.user_id)) %>
         <%= link_to "Edit this watch", edit_watch_path(@watch), class: "btn btn-sm btn-warning"%>
         <%= link_to "Remove this watch", hide_watch_path(@watch), class: "btn btn-sm btn-danger"%>
-      <% end %>
-      <% if (user_signed_in? && (current_user.id != @watch.user_id)) %>
+      <% elsif (user_signed_in? && (current_user.id != @watch.user_id)) %>
         <%= render 'watches/booking_form_embed' %>
       <% else %>
-        <p>
         <%= link_to "Log in to book this watch!", new_user_session_path, class: "btn btn-primary"%>
-        </p>
       <% end %>
     </div>
     <%= render 'watches/map', watch: @watch, map_circle: @map_circle %>
