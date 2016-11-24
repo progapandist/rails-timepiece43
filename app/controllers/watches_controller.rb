@@ -2,19 +2,20 @@ class WatchesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
 
   def index
-    @watches = Watch.order(created_at: :desc)
+    @watches = Watch.order(created_at: :desc).where(:hidden == false)
   end
 
   def show
-    @watch = Watch.find(params[:id])
+    if Watch.find(params[:id]).hidden == false
+        @watch = Watch.find(params[:id])
 
-    # Circle info for the map
-    @map_circle = {
-      lat: @watch.latitude,
-      lng: @watch.longitude,
-      radius: 500
-    }
-
+      # Circle info for the map
+      @map_circle = {
+        lat: @watch.latitude,
+        lng: @watch.longitude,
+        radius: 500
+      }
+    end
   end
 
   def new
@@ -48,6 +49,13 @@ class WatchesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def hide
+    @watch = Watch.find(params[:id])
+    @watch.hidden = true
+    @watch.save
+    redirect_to :index
   end
 
   private
