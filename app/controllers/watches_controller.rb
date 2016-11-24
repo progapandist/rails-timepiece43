@@ -4,7 +4,7 @@ class WatchesController < ApplicationController
   def index
     params[:search] = nil if params[:search] == ""
     if params[:search] == nil
-      @watches = Watch.order(created_at: :desc).where(:hidden == false)
+      @watches = Watch.order(created_at: :desc).where(hidden: false)
     elsif params[:search] != nil
        @watches = Watch.where("name ILIKE ?", "%#{params[:search]}%")
     end
