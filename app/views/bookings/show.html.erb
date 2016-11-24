@@ -4,7 +4,7 @@
   <%= link_to "Show me other timepieces", watches_path, class: "btn btn-primary" %>
   <h1>Congrats!</h1>
   <p>Thank you for your interest in one of our unique timepices. Its owner will confirm your booking shortly<p>
-    <%= cl_image_tag @booking.watch.photo.path, width: 200, height: 300, crop: :fit %>
+    <%= cl_image_tag watch_photo_or_stub(@booking.watch), width: 200, height: 300, crop: :fit %>
     <h2> <%= "#{@booking.watch.user.first_name}'s #{@booking.watch.name}"%></h2>
     <p> <strong>Is yours on:</strong>
       <%= "#{@booking.start_date.strftime('%d/%m/%Y')} - #{@booking.end_date.strftime('%d/%m/%Y')}"%>
