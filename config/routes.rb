@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   get '/bookings/:id/accept' => 'bookings#accepted', as: 'accept_booking'
   get '/bookings/:id/reject' => 'bookings#rejected', as: 'reject_booking'
 
-  root to: 'watches#index'
+  root to: 'pages#home'
   mount Attachinary::Engine => "/attachinary"
 end
