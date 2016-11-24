@@ -1,6 +1,7 @@
 class Booking < ApplicationRecord
   belongs_to :watch
   belongs_to :user
+  has_many :reviews
 
  # Make sure end is earlier than the start
   validate :start_is_earlier_than_end

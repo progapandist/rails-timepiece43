@@ -5,9 +5,9 @@ Rails.application.routes.draw do
     resources :bookings, only: [ :new, :create ]
   end
   resources :users, only: [ :show, :edit, :update ]
-  resources :bookings, only: :index
+  resources :reviews, only: :index
   resources :bookings, only: [ :index, :show ] do
-    resources :reviews, only: [:new, :create]
+    resources :reviews, only: [ :new, :create ]
   end
 
   get '/dashboard' => 'bookings#dashboard'
