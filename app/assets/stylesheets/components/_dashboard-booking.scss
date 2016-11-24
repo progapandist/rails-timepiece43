@@ -1,0 +1,56 @@
+.booking {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  transition: all 0.15s ease;
+  border: 1px solid #E6E6E6;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+/* Body design */
+.booking-body {
+  flex: 1 1 auto;
+}
+.booking-body h3 {
+  font-weight: bold;
+  font-size: 23px;
+  margin-top: 0;
+}
+.booking-body p {
+  font-weight: lighter;
+  color: #4C4C4C;
+  margin-bottom: 0;
+}
+
+.booking-image {
+  border-radius: 10px;
+  margin-right: 20px;
+  width: 175px;
+  height: 150px;
+}
+
+.booking-button {
+  margin: 10px;
+}
+
+
+// .booking-accepted {
+//   background-color: rgba(0,255,0,0.05)
+// }
+
+// .booking-declined {
+//   background-color:rgba(255,0,0,0.05);
+// }
+
+// .booking-pending {
+//   background-color: rgba(192,192,192,0.1);
+// }
+
+// .booking-past {
+//   background-color:  rgba(57,57,57,0.1);
+// }
+
+.user-photo-booking {
+  position: relative
+}

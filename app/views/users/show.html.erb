@@ -15,7 +15,8 @@
 <div class="container container-profile">
   <h2  class="title-user-show text-center"> <%= "#{@user.first_name}'s watches" %> </h2>
   <div class="row">
-    <% @user.watches.each do |watch| %>
+    <% watches = @user.watches.reject { |w| w.hidden == true } %>
+    <% watches.each do |watch| %>
     <div class="col-xs-12 col-sm-3">
       <div class="dashboard-card">
           <div class="dashboard-card-body">
