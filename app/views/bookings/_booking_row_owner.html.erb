@@ -2,7 +2,7 @@
   <%= cl_image_tag watch_photo_or_stub(booking.watch), class:"booking-image hidden-xs" %>
   <div class='booking-body'>
     <h3><%= booking.watch.name %></h3>
-    <p>Booking from <%= booking.start_date %> to <%= booking.end_date %></p>
+    <p> <%= link_to booking.user.first_name, user_path(booking.user) %> booked your watch from <%= booking.start_date %> to <%= booking.end_date %></p>
     <p><%= booking.watch.description %></p>
     <p>Booking <%= booking.status %></p>
   </div>
