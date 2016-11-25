@@ -1,19 +1,17 @@
 <div class="banner" style="background-image: linear-gradient(-225deg, rgba(11,72,135,0.43) 0%, rgba(0,12,12,0.6) 86%),  url(<%= cl_image_path("unkz1zlofox8pjqec424") %>);">
   <div class="banner-content">
     <h1>Feel history on your wrist </h1>
-     <% if (user_signed_in?) %>
-    <a><%= link_to "Add your watch", new_watch_path(@watch), class: "home-button btn btn-primary btn-lg" %></a>
-     <a> <%= link_to 'Find inspiration', watches_path, class: "home-button btn btn-primary btn-lg" %></a>
-      <% else  %>
-    <a><%= link_to "Sign up", new_user_registration_path, class: " home-button btn btn-primary btn-lg" %></a>
-    <% end %>
-
    <div class="search-bar">
     <%= form_tag(watches_path, :method => "get", class: "navbar-wagon-search", id: "search-form") do %>
         <%= text_field_tag :search, params[:search], placeholder: "Search for a Timepiece", class: "form-control border-radius" %>
         <button type="submit" class="btn-mine"><i class="fa fa-search"></i>  SEARCH</button>
       <% end %>
     </div>
+    <% if (user_signed_in?) %>
+     <a> <%= link_to 'Find inspiration', watches_path, class: "home-button btn btn-primary btn-lg" %></a>
+      <% else  %>
+    <a><%= link_to "Sign up", new_user_registration_path, class: " home-button btn btn-primary btn-lg" %></a>
+    <% end %>
   </div>
 </div>
 
