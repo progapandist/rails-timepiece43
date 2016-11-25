@@ -17,7 +17,7 @@ class BookingsController < ApplicationController
     @bookings = []
     @user = current_user
     Booking.order(:start_date).each do |booking|
-      if owner_watches_ids.include?(booking.watch.id)
+      if owner_watches_ids.include?(booking.watch.id) && !booking.declined?
         @bookings << booking
       end
     end
