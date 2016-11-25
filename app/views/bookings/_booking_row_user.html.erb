@@ -5,8 +5,11 @@
     <p><%= booking.watch.description %></p>
     <p>Booking <%= booking.status %></p>
   </div>
+  <% if booking.past? %>
+    <%= link_to("Add a review for this booking", new_booking_review_path(booking), class: "btn btn-primary booking-button") %>
+  <% end %>
   <div class="user-photo-booking">
-  <%= cl_image_tag user_avatar_or_stub(booking.watch.user),class:"avatar-large hidden-xs" %>
-  <%= link_to "", user_path(booking.user), class: "card-link"  %>
+    <%= cl_image_tag user_avatar_or_stub(booking.watch.user),class:"avatar-large hidden-xs" %>
+    <%= link_to "", user_path(booking.user), class: "card-link"  %>
   </div>
 </div>
