@@ -10,6 +10,11 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.booking = Booking.find(params[:booking_id])
+    if current_user == @review.booking.watch.user
+      @review.owner = true
+    else
+      @review.owner = false
+    end
     if @review.save
       if @review.booking.user == current_user
         redirect_to user_path(@review.booking.watch.user)

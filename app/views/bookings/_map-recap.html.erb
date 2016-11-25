@@ -4,8 +4,8 @@
   <%# Only display map if watch has coordinates %>
   <% unless watch.location.blank? %>
   <%# Map html %>
-  <h4>You'll pick it up here</h4>
-  <div id="map" style="width: 100%; height: 300px;"></div>
+  <h4 class="text-center">You'll pick it up here:</h4>
+  <div class="recap-map" id="map" style="width: 80%; height: 581px;"></div>
     <%# Map logic %>
     <% content_for(:after_js) do %>
     <script>

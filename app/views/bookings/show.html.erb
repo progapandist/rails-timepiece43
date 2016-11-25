@@ -1,13 +1,26 @@
 <%# TODO: don't forget to calculate the price! %>
-
-<div class="container">
-  <%= link_to "Show me other timepieces", watches_path, class: "btn btn-primary" %>
-  <h1>Congrats!</h1>
-  <p>Thank you for your interest in one of our unique timepices. Its owner will confirm your booking shortly<p>
-    <%= cl_image_tag watch_photo_or_stub(@booking.watch), width: 200, height: 300, crop: :fit %>
-    <h2> <%= "#{@booking.watch.user.first_name}'s #{@booking.watch.name}"%></h2>
-    <p> <strong>Is yours on:</strong>
-      <%= "#{@booking.start_date.strftime('%d/%m/%Y')} - #{@booking.end_date.strftime('%d/%m/%Y')}"%>
-    <h3>You're paying: <%= "#{booking_price(@booking)}€" %></h3>
-    <%= render 'map-recap', watch: @watch, map_circle: @map_circle %>
+<div class="col-sm-6">
+  <div class="wrapper" id="booking-recap-wrapper">
+    <div class="booking-recap-container">
+      <div class="text-center">
+        <h1>Congrats!</h1>
+        <p>Thank you for your interest in one of our unique timepices. Its owner will confirm your booking shortly.</p>
+        <%= cl_image_tag watch_photo_or_stub(@booking.watch), width: 200, height: 200, crop: :fill, class: "booking-picture" %>
+        <h4> <%= "#{@booking.watch.user.first_name}'s #{@booking.watch.name}"%></h4>
+        <p> <strong>Is yours on:</strong> </p>
+          <%= "#{@booking.start_date.strftime('%d/%m/%Y')} - #{@booking.end_date.strftime('%d/%m/%Y')}"%>
+        <h4>You're paying: <%= "#{booking_price(@booking)}€" %></h4>
+        <div class="btn-show-more">
+        <%= link_to "Show me other timepieces", watches_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<div class="wrapper">
+  <div class="col-sm-6">
+    <%= render 'map-recap', watch: @watch, map_circle: @map_circle %>
+  </div>
+</div>
+
