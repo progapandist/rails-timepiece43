@@ -9,7 +9,7 @@
         <h4> <%= "#{@booking.watch.user.first_name}'s #{@booking.watch.name}"%></h4>
         <p> <strong>Is yours on:</strong> </p>
           <%= "#{@booking.start_date.strftime('%d/%m/%Y')} - #{@booking.end_date.strftime('%d/%m/%Y')}"%>
-        <h4>You're paying: <%= "#{booking_price(@booking)}€" %></h4>
+        <h3>You're paying: <%= "#{booking_price(@booking)}€" %></h3>
         <div class="btn-show-more">
         <%= link_to "Show me other timepieces", watches_path, class: "btn btn-primary" %>
         </div>
