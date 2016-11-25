@@ -2,7 +2,6 @@ module BookingsHelper
 
   def booking_links(booking)
     if booking.past?
-      raise
       link_to("Add a review for this booking", new_booking_review_path(booking), class: "btn btn-primary booking-button")
     elsif booking.pending?
       link_to("Accept the booking", accept_booking_path(booking), class: "btn btn-primary booking-button") +
