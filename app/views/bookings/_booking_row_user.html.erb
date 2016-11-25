@@ -1,7 +1,7 @@
 <div class="booking">
   <%= cl_image_tag watch_photo_or_stub(booking.watch), class:"booking-image hidden-xs" %>
   <div class='booking-body'>
-    <p>Booking from <%= booking.start_date %> to <%= booking.end_date %></p>
+    <p>Booking <%= booking.user.first_name %>'s timepiece from <%= booking.start_date.strftime('%d/%m/%Y') %> to <%= booking.end_date.strftime('%d/%m/%Y') %></p>
     <p><%= booking.watch.description %></p>
     <p>Booking <%= booking.status %></p>
   </div>
