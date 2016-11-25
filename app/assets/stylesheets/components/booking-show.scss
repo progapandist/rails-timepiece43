@@ -8,21 +8,47 @@ margin-top: 10px;
 }
 
 .booking-picture {
-  border-radius: 5px;
-  box-shadow: 16px 12px 22px -10px rgba(0,0,0,0.6);
+border-radius: 5px;
+box-shadow: 16px 12px 22px -10px rgba(0,0,0,0.6);
 
 }
 
 .btn-box-watch-show {
-  margin-top: 10px;
+margin-top: 10px;
 }
 
 .box-watch-show-details {
-  display: flex;
-  flex-direction: column;
-  margin-top: 20px;
+display: flex;
+flex-direction: column;
+margin-top: 20px;
 }
 
 .box-informations {
 width: 100%;
+}
+
+#booking-recap-wrapper {
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 25px 25px;
+}
+
+.booking-recap-container {
+padding: 17px 57px 53px 56px;
+background-color: #fff;
+border-radius: .3125em;
+border: 1px solid #dce3e6;
+width: 100%;
+@media(max-width: $screen-sm) {
+  width: 90%;
+  }
+}
+
+.recap-map {
+margin: auto;
+}
+
+.btn-show-more {
+  margin-top: 25px;
 }
