@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161124110052) do
+ActiveRecord::Schema.define(version: 20161124175602) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,16 @@ ActiveRecord::Schema.define(version: 20161124110052) do
     t.string   "status",     default: "pending"
     t.index ["user_id"], name: "index_bookings_on_user_id", using: :btree
     t.index ["watch_id"], name: "index_bookings_on_watch_id", using: :btree
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "rating"
+    t.string   "title"
+    t.text     "content"
+    t.integer  "booking_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_reviews_on_booking_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -84,5 +94,6 @@ ActiveRecord::Schema.define(version: 20161124110052) do
 
   add_foreign_key "bookings", "users"
   add_foreign_key "bookings", "watches"
+  add_foreign_key "reviews", "bookings"
   add_foreign_key "watches", "users"
 end

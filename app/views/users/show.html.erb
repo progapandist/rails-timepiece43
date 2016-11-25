@@ -1,27 +1,27 @@
 <div class="container-profile text-center ">
-<div class="row" style="background-image: linear-gradient(-225deg, rgba(11,72,135,0.43) 0%, rgba(0,12,12,0.6) 86%),  url(<%= image_path 'time_background.jpg'%>);">
-<br>
-<div class="col-xs-offset-1 col-xs-10 col-sm-offset-4 col-sm-4"><%= cl_image_tag user_avatar_or_stub(@user),
-    width: 200, height: 200, crop: :fill, gravity: :face,
-    class:"avatar-large" %></div>
-<div class="col-xs-offset-1 col-xs-10 col-sm-offset-4 col-sm-4">
-  <h1> <%= "#{@user.first_name} #{@user.last_name}" %> </h1>
-</div>
-</div>
-</div>
+  <div class="row" style="background-image: linear-gradient(-225deg, rgba(11,72,135,0.43) 0%, rgba(0,12,12,0.6) 86%),  url(<%= image_path 'time_background.jpg'%>);">
+    <br>
+    <div class="col-xs-offset-1 col-xs-10 col-sm-offset-4 col-sm-4"><%= cl_image_tag user_avatar_or_stub(@user),
+      width: 200, height: 200, crop: :fill, gravity: :face,
+      class:"avatar-large" %></div>
+      <div class="col-xs-offset-1 col-xs-10 col-sm-offset-4 col-sm-4">
+        <h1> <%= "#{@user.first_name} #{@user.last_name}" %> </h1>
+      </div>
+    </div>
+  </div>
 
-<br>
+  <br>
 
-<div class="container container-profile">
-  <h2  class="title-user-show text-center"> <%= "#{@user.first_name}'s watches" %> </h2>
-  <div class="row">
-    <% watches = @user.watches.reject { |w| w.hidden == true } %>
-    <% watches.each do |watch| %>
-    <div class="col-xs-12 col-sm-3">
-      <div class="dashboard-card">
+  <div class="container container-profile">
+    <h2  class="title-user-show text-center"> <%= "#{@user.first_name}'s watches" %> </h2>
+    <div class="row">
+      <% watches = @user.watches.reject { |w| w.hidden == true } %>
+      <% watches.each do |watch| %>
+      <div class="col-xs-12 col-sm-3">
+        <div class="dashboard-card">
           <div class="dashboard-card-body">
-          <div class="dashboard-card-picture" style="background-image: url('<%= cl_image_path watch_photo_or_stub(watch)%>')">
-          </div>
+            <div class="dashboard-card-picture" style="background-image: url('<%= cl_image_path watch_photo_or_stub(watch)%>')">
+            </div>
             <div class="dashboard-card-hover text-center">
               <h4><%= watch.name %></h4>
               <p><%= watch.description %></p>
@@ -35,7 +35,50 @@
             </div>
           </div>
         </div>
+      </div>
+      <% end %>
     </div>
-    <% end %>
   </div>
+
+<div class="container">
+<% if @reviews_as_an_owner.length != 0 %>
+<h1 class="text-center"><%= @user.first_name %>'s reviews as a Timepiece owner</h1>
+  <% @reviews_as_an_owner.each do |review| %>
+  <div class="booking">
+    <%= cl_image_tag watch_photo_or_stub(review.booking.watch), class:"booking-image hidden-xs" %>
+    <div class='booking-body'>
+      <p>Booking from <%= review.booking.start_date %> to <%= review.booking.end_date %></p>
+      <p><%= review.title %></p>
+      <p><%= review.content %></p>
+      <p><% review.rating.times do %><i class="fa fa-star"></i><% end %></p>
+    </div>
+    <div class="user-photo-booking">
+      <%= cl_image_tag user_avatar_or_stub(review.booking.watch.user),class:"avatar-large hidden-xs" %>
+      <%= link_to "", user_path(review.booking.user), class: "card-link"  %>
+    </div>
+  </div>
+  <% end %>
+<% end %>
+</div>
+
+
+<div class="container">
+
+<% if @reviews_as_a_user.length != 0 %>
+<h1 class="text-center"><%= @user.first_name %>'s reviews as a Timepiece user</h1>
+  <% @reviews_as_a_user.each do |review| %>
+  <div class="booking">
+    <%= cl_image_tag watch_photo_or_stub(review.booking.watch), class:"booking-image hidden-xs" %>
+    <div class='booking-body'>
+      <p>Booking from <%= review.booking.start_date %> to <%= review.booking.end_date %></p>
+      <p><%= review.title %></p>
+      <p><%= review.content %></p>
+    </div>
+    <div class="user-photo-booking">
+      <%= cl_image_tag user_avatar_or_stub(review.booking.watch.user),class:"avatar-large hidden-xs" %>
+      <%= link_to "", user_path(review.booking.user), class: "card-link"  %>
+    </div>
+  </div>
+  <% end %>
+<% end %>
 </div>
