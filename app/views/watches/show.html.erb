@@ -25,7 +25,6 @@
    </div>
 
      <%# TODO: refactor to helper %>
-
    </div>
    <div class="col-xs-12 col-md-6">
     <% if (user_signed_in? && (current_user.id != @watch.user_id)) %>
@@ -35,4 +34,5 @@
     <% end %>
     <%= render 'watches/map', watch: @watch, map_circle: @map_circle %>
   </div>
+</div>
 </div>
