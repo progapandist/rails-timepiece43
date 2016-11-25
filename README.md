@@ -1,1 +1,1 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+A full-featured web marketplace in Ruby on Rails developed as a team exercise in 4 days by a team of 4 students at Paris Le Wagon bootcamp. 
