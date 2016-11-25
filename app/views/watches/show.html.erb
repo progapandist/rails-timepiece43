@@ -2,25 +2,29 @@
   <div class="row">
     <%# Info column %>
     <div class="col-xs-12 col-md-6">
-      <div class="box-watch-show-details">
-        <div class="box-informations text-center">
-          <h3><%= @watch.name %> <%=cl_image_tag user_avatar_or_stub(@watch.user), class: "avatar-large"  %></h3>
-          <p>Belongs to:
-            <%= link_to "#{@watch.user.first_name} #{@watch.user.last_name}", user_path(@watch.user)%>
-          </p>
-          <h4>Description: </h4>
-          <p>
-            <%= @watch.description %>
-          </p>
-          <div>
-            <%= cl_image_tag watch_photo_or_stub(@watch), :width => 300, :height => 300, :crop => :fill, class: "booking-picture"%>
-            <% if (user_signed_in? && (current_user.id == @watch.user_id)) %>
-            <div class="btn-box-watch-show">
-             <p><%= link_to "Edit this watch", edit_watch_path(@watch), class: "btn btn-sm btn-warning"%></p>
-             <p> <%= link_to "Remove this watch", hide_watch_path(@watch), class: "btn btn-sm btn-danger"%> </p>
-           </div>
-        <% end %>
-        </div>
+       <div class="wrapper" id="booking-recap-wrapper">
+          <div class="booking-recap-container">
+            <div class="box-watch-show-details">
+              <div class="box-informations text-center">
+                <h3><%= @watch.name %> <%=cl_image_tag user_avatar_or_stub(@watch.user), class: "avatar-large"  %></h3>
+                <p>Belongs to:
+                  <%= link_to "#{@watch.user.first_name} #{@watch.user.last_name}", user_path(@watch.user)%>
+                </p>
+                <h4>Description: </h4>
+                <p>
+                  <%= @watch.description %>
+                </p>
+                <div>
+                  <%= cl_image_tag watch_photo_or_stub(@watch), :width => 300, :height => 300, :crop => :fill, class: "booking-picture"%>
+                  <% if (user_signed_in? && (current_user.id == @watch.user_id)) %>
+                  <div class="btn-box-watch-show">
+                   <p><%= link_to "Edit this watch", edit_watch_path(@watch), class: "btn btn-sm btn-warning"%></p>
+                   <p> <%= link_to "Remove this watch", hide_watch_path(@watch), class: "btn btn-sm btn-danger"%> </p>
+                 </div>
+              <% end %>
+              </div>
+            </div>
+          </div>
       </div>
    </div>
 

@@ -4,7 +4,7 @@
   <%# Only display map if watch has coordinates %>
   <% unless watch.location.blank? %>
   <%# Map html %>
-  <h4>This watch location</h4>
+  <h4 class=" text-center">This watch location</h4>
   <div id="map" style="width: 100%; height: 280px; margin-bottom: 18px;"></div>
     <%# Map logic %>
     <% content_for(:after_js) do %>
