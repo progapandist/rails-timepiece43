@@ -83,7 +83,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to booking_path(@booking)
     else
-      flash[:alert] = "End date should be later than the start. One night minimum"
+      flash[:alert] = "Please provide valid dates. End date should be later that start date."
       redirect_to watch_path(@watch)
     end
   end
