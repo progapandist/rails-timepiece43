@@ -9,6 +9,7 @@
 
 <% if @bookings.length != 0 %>
 <div class="container">
+  <h2 class="text-center">Timepieces rented from you</h2>
   <% @bookings.each do |booking| %>
     <%= render "booking_row_owner", booking: booking %>
   <% end %>
@@ -20,6 +21,7 @@
 
 <% if @bookings_user.length != 0 %>
 <div class="container">
+  <h2 class=" text-center">Timepieces you are renting</h2>
   <% @bookings_user.each do |booking| %>
     <div class="row">
       <%= render "booking_row_user", booking: booking %>
@@ -29,7 +31,7 @@
 <% end %>
 
 
-<h1 class="text-center">Your watches</h1>
+<h2 class="text-center">Timepieces you own</h2>
 <div class="your-watches">
   <div class="container">
     <div class="row">
