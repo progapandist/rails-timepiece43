@@ -1,4 +1,7 @@
 <%# TODO: don't forget to calculate the price! %>
+<<<<<<< HEAD
+<div class="container">
+  <div class="row">
 <div class="col-sm-6">
   <div class="wrapper" id="booking-recap-wrapper">
     <div class="booking-recap-container">
@@ -15,12 +18,14 @@
         </div>
       </div>
     </div>
+
+    <div class="wrapper">
+      <div class="col-sm-6">
+        <%= render 'map-recap', watch: @watch, map_circle: @map_circle %>
+      </div>
+    </div>
   </div>
 </div>
-
-<div class="wrapper">
-  <div class="col-sm-6">
-    <%= render 'map-recap', watch: @watch, map_circle: @map_circle %>
-  </div>
+</div>
 </div>
 
