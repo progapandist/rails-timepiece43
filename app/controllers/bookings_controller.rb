@@ -17,7 +17,7 @@ class BookingsController < ApplicationController
     @bookings = []
     @user = current_user
     Booking.order(:start_date).each do |booking|
-      if owner_watches_ids.include?(booking.watch.id)
+      if owner_watches_ids.include?(booking.watch.id) && !booking.declined?
         @bookings << booking
       end
     end
@@ -27,14 +27,20 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @booking.status = "accepted"
     @booking.save
-    redirect_to dashboard_path
+    respond_to do |format|
+        format.html { redirect_to dashboard_path }
+        format.js
+    end
   end
 
   def rejected
     @booking = Booking.find(params[:id])
     @booking.status = "declined"
     @booking.save
-    redirect_to dashboard_path
+    respond_to do |format|
+        format.html { redirect_to dashboard_path }
+        format.js
+    end
   end
 
   def show
