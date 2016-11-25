@@ -2,7 +2,7 @@
   <%= cl_image_tag watch_photo_or_stub(booking.watch), class:"booking-image hidden-xs" %>
   <div class='booking-body'>
     <p>
-      You are booking <%= link_to booking.watch.user.first_name, user_path(booking.user) %>'s timepiece <strong>from <%= booking.start_date.strftime('%d/%m/%Y') %> to <%= booking.end_date.strftime('%d/%m/%Y') %></strong>
+      You are booking <%= link_to booking.watch.user.first_name, user_path(booking.watch.user) %>'s timepiece <strong>from <%= booking.start_date.strftime('%d/%m/%Y') %> to <%= booking.end_date.strftime('%d/%m/%Y') %></strong>
     </p>
     <p><strong>Status</strong>: <span class="label <%= label_status(booking) %>"><%= booking.status %></span></p>
   </div>
