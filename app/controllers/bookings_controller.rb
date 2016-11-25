@@ -27,7 +27,10 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @booking.status = "accepted"
     @booking.save
-    redirect_to dashboard_path
+    respond_to do |format|
+        format.html { redirect_to dashboard_path }
+        format.js
+    end
   end
 
   def rejected
