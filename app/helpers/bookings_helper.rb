@@ -14,9 +14,19 @@ module BookingsHelper
   end
 
   def booking_price(booking)
-  price = booking.watch.price
-  days = (booking.end_date - booking.start_date).floor
-  return days * price
-end
+    price = booking.watch.price
+    days = (booking.end_date - booking.start_date).floor
+    return days * price
+  end
+
+  def label_status(booking)
+    if booking.status == 'accepted'
+     "label-success"
+    elsif booking.status == 'declined'
+      "label-danger"
+    else
+      "label-info"
+    end
+  end
 
 end
