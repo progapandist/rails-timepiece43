@@ -53,7 +53,7 @@
       <p><% review.rating.times do %><i class="fa fa-star"></i><% end %></p>
     </div>
     <div class="user-photo-booking">
-      <%= cl_image_tag user_avatar_or_stub(review.booking.watch.user),class:"avatar-large hidden-xs" %>
+      <%= cl_image_tag user_avatar_or_stub(review.booking.user),class:"avatar-large hidden-xs" %>
       <%= link_to "", user_path(review.booking.user), class: "card-link"  %>
     </div>
   </div>
@@ -76,7 +76,7 @@
     </div>
     <div class="user-photo-booking">
       <%= cl_image_tag user_avatar_or_stub(review.booking.watch.user),class:"avatar-large hidden-xs" %>
-      <%= link_to "", user_path(review.booking.user), class: "card-link"  %>
+      <%= link_to "", user_path(review.booking.watch.user), class: "card-link"  %>
     </div>
   </div>
   <% end %>
