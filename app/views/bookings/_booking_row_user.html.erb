@@ -10,6 +10,6 @@
   <% end %>
   <div class="user-photo-booking">
     <%= cl_image_tag user_avatar_or_stub(booking.watch.user),class:"avatar-large hidden-xs" %>
-    <%= link_to "", user_path(booking.user), class: "card-link"  %>
+    <%= link_to "", user_path(booking.watch.user), class: "card-link"  %>
   </div>
 </div>
